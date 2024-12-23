@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_palembang/screens/login_screens.dart';
 import 'package:hotel_palembang/screens/main_screens.dart';
-import 'package:hotel_palembang/screens/rating_screen.dart';
-import 'package:hotel_palembang/screens/contact_screen.dart';
+// import 'package:hotel_palembang/screens/rating_screen.dart';
+// import 'package:hotel_palembang/screens/contact_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -26,8 +26,7 @@ class MainApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginScreen(),
         '/home': (context) => const MainScreen(),
-        '/rating': (context) => const RatingScreen(),
-        '/contact': (context) => const ContactScreen()
+        
 
       },
     );
