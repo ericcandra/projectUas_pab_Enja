@@ -51,8 +51,8 @@ class _MainScreenState extends State<MainScreen> {
         onTap: _onItemTapped,
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        selectedItemColor: Colors.deepPurple,
-        unselectedItemColor: Colors.deepPurple.shade200,
+        selectedItemColor: const Color.fromARGB(255, 245, 103, 169),
+        unselectedItemColor: const Color.fromARGB(255, 239, 124, 195),
       ),
     );
   }
