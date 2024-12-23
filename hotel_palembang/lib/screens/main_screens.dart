@@ -4,7 +4,8 @@ import 'package:hotel_palembang/screens/home_screens.dart';
 import 'package:hotel_palembang/screens/login_screens.dart';
 import 'package:hotel_palembang/screens/profile_screens.dart';
 import 'package:hotel_palembang/screens/search_screens.dart';
-
+import 'package:hotel_palembang/screens/rating_screen.dart';
+import 'package:hotel_palembang/screens/contact_screen.dart'; 
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -21,7 +22,10 @@ class _MainScreenState extends State<MainScreen> {
     SearchScreen(),
     FavoriteScreen(),
     ProfileScreen(),
-    LoginScreen()
+    LoginScreen(),
+    RatingScreen(),
+    ContactScreen(),
+
     
   ];
 
@@ -45,7 +49,11 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.favorite),label: 'Favorite'),
           // item keempat
           BottomNavigationBarItem(icon: Icon(Icons.person),label: 'Profile'),
-          
+          // item kelima
+          BottomNavigationBarItem(icon: Icon(Icons.star),label: 'Rating'),
+          // item keenam
+          BottomNavigationBarItem(icon: Icon(Icons.contact_page),label: 'Contact'), 
+
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
