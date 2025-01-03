@@ -1,76 +1,77 @@
 import 'package:flutter/material.dart';
 
-class ContactScreen extends StatelessWidget {
-  const ContactScreen({super.key});
+class ContactUsScreen extends StatelessWidget {
+  const ContactUsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact Admin'),
+        title: const Text('Contact Us'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Admin: Enja',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            const Center(
+              child: Text(
+                'Contact Us',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
+            Center(
+            child: SizedBox(
+              height: 150,
+              width: 150,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.asset(
+                  'images/hotel_logo.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+          ),
             const SizedBox(height: 16),
-            ContactInfoRow(
-              icon: Icons.phone,
-              label: 'WhatsApp',
-              contactInfo: '+62 812-3456-7890',
+            const Text(
+              'Email:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const SizedBox(height: 8),
-            ContactInfoRow(
-              icon: Icons.email,
-              label: 'Email',
-              contactInfo: 'enja@example.com',
+            const Text('support@enja.com'),
+            const SizedBox(height: 16),
+            const Text(
+              'Phone:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const SizedBox(height: 8),
-            ContactInfoRow(
-              icon: Icons.account_circle,
-              label: 'Instagram',
-              contactInfo: '@enja_instagram',
+            const Text('+1 (123) 456-7890'),
+            const SizedBox(height: 16),
+            const Text(
+              'Address:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
+            const Text('123 Enja Street, Palembang, Indonesia'),
+            const SizedBox(height: 32),
+            const Text(
+              'Jangan ragu untuk menghubungi kami jika Anda memiliki pertanyaan atau membutuhkan bantuan. Kami selalu siap membantu Anda!',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ContactInfoRow extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String contactInfo;
-
-  const ContactInfoRow({
-    required this.icon,
-    required this.label,
-    required this.contactInfo,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(icon, size: 28),
-        const SizedBox(width: 16),
-        Text(
-          '$label: ',
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-        ),
-        Expanded(
-          child: Text(
-            contactInfo,
-            style: const TextStyle(fontSize: 18),
-          ),
-        ),
-      ],
     );
   }
 }

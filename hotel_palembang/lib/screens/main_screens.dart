@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_palembang/screens/favorite_screens.dart';
 import 'package:hotel_palembang/screens/home_screens.dart';
-import 'package:hotel_palembang/screens/login_screens.dart';
 import 'package:hotel_palembang/screens/profile_screens.dart';
 import 'package:hotel_palembang/screens/search_screens.dart';
 import 'package:hotel_palembang/screens/rating_screen.dart';
@@ -22,10 +21,8 @@ class _MainScreenState extends State<MainScreen> {
     SearchScreen(),
     FavoriteScreen(),
     ProfileScreen(),
-    LoginScreen(),
     RatingScreen(),
-    ContactScreen(),
-
+    ContactUsScreen(),
     
   ];
 
