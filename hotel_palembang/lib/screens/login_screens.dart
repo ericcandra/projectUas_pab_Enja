@@ -1,19 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_palembang/data/user_data.dart';
 import 'package:hotel_palembang/models/user.dart';
-
+import 'package:hotel_palembang/screens/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreen();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreen extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  bool validateLogin(String email, String password) {
+    for (User user in userList) {
+      if (user.email == email && user.password == password) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Future<void> _login() async {
+    String email = _emailController.text.trim();
+    String password = _passwordController.text.trim();
+
+    if (validateLogin(email, password)) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('isLoggedIn', true);
+      await prefs.setString('email', email);
+
+      // Navigasi ke halaman Home
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Invalid email or password')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +73,11 @@ class _LoginScreen extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 16),
+                    const Text(
+                      'Login',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 16),
                     // TextField untuk Email
                     TextField(
                       controller: _emailController,
@@ -67,31 +99,21 @@ class _LoginScreen extends State<LoginScreen> {
                     const SizedBox(height: 16),
                     // Tombol Login
                     ElevatedButton(
-                      onPressed: () async {
-                        String email = _emailController.text;
-                        String password = _passwordController.text;
-
-                        if (validateLogin(email, password)) {
-                          SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await prefs.setBool('isLoggedIn', true);
-                          await prefs.setString('email', email);
-                          Navigator.pushReplacementNamed(context, '/home');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Invalid email or password')));
-                        }
-                      },
+                      onPressed: _login,
                       child: const Text('Login'),
                     ),
                     const SizedBox(height: 16),
                     // Tombol untuk Register
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/register');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RegisterScreen(),
+                          ),
+                        );
                       },
-                      child: const Text('Don\'t have an account? Register'),
+                      child: const Text('Don\'t have an account? Register here'),
                     ),
                   ],
                 ),
@@ -101,14 +123,5 @@ class _LoginScreen extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  bool validateLogin(String email, String password) {
-    for (User user in userList) {
-      if (user.email == email && user.password == password) {
-        return true;
-      }
-    }
-    return false;
   }
 }

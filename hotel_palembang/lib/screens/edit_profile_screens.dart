@@ -2,6 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditProfileScreen extends StatefulWidget {
+  final String initialName;
+  final String initialEmail;
+  final String initialPhone;
+
+  const EditProfileScreen({
+    super.key,
+    required this.initialName,
+    required this.initialEmail,
+    required this.initialPhone,
+  });
+
   @override
   _EditProfileScreenState createState() => _EditProfileScreenState();
 }
@@ -14,22 +25,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-    _loadProfileData();
-  }
-
-  Future<void> _loadProfileData() async {
-    final prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _nameController = TextEditingController(
-        text: prefs.getString('user_name') ?? 'Eric Candra',
-      );
-      _emailController = TextEditingController(
-        text: prefs.getString('user_email') ?? 'ericcandra@gmail.com',
-      );
-      _phoneController = TextEditingController(
-        text: prefs.getString('user_phone') ?? '+62 812 1555 9999',
-      );
-    });
+    _nameController = TextEditingController(text: widget.initialName);
+    _emailController = TextEditingController(text: widget.initialEmail);
+    _phoneController = TextEditingController(text: widget.initialPhone);
   }
 
   Future<void> _saveProfileData() async {

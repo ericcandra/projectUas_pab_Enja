@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_palembang/screens/edit_profile_screens.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,22 +15,39 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   File? _profileImage;
   String? _savedImagePath;
+  String? _selectedImage;
+  String _name = 'Enja';
+  String _email = 'enja@gmail.com';
+  String _phone = '+62 812 1555 9999';
+
+  final List<String> _localImages = [
+    'images/icon.jpg',
+    'images/profile.jpg',
+    'images/anime.jpg',
+    'images/th.jpg'
+  ];
 
   @override
   void initState() {
     super.initState();
-    _loadProfileImage();
+    _loadProfileData();
   }
 
-  Future<void> _loadProfileImage() async {
+  Future<void> _loadProfileData() async {
     final prefs = await SharedPreferences.getInstance();
-    final imagePath = prefs.getString('profile_image_path');
-    if (imagePath != null) {
-      setState(() {
+    setState(() {
+      _name = prefs.getString('user_name') ?? _name;
+      _email = prefs.getString('user_email') ?? _email;
+      _phone = prefs.getString('user_phone') ?? _phone;
+
+      final imagePath = prefs.getString('profile_image_path');
+      if (imagePath != null && imagePath.startsWith('images/')) {
+        _selectedImage = imagePath;
+      } else if (imagePath != null) {
         _savedImagePath = imagePath;
         _profileImage = File(imagePath);
-      });
-    }
+      }
+    });
   }
 
   Future<void> _saveProfileImage(String path) async {
@@ -36,16 +55,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await prefs.setString('profile_image_path', path);
   }
 
-  void _pickImage() async {
+  void _pickImageFromGallery() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
         _profileImage = File(pickedFile.path);
+        _selectedImage = null;
       });
       await _saveProfileImage(pickedFile.path);
     }
+  }
+
+  void _pickImageFromLocal() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return ListView.builder(
+          itemCount: _localImages.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: Image.asset(_localImages[index], width: 50, height: 50),
+              title: Text('Image ${index + 1}'),
+              onTap: () async {
+                setState(() {
+                  _selectedImage = _localImages[index];
+                  _profileImage = null;
+                });
+                await _saveProfileImage(_localImages[index]);
+                Navigator.pop(context);
+              },
+            );
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -70,106 +115,88 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Profile Picture
-                    GestureDetector(
-                      onTap: _pickImage, // Mengganti foto profil saat gambar ditekan
-                      child: CircleAvatar(
-                        radius: 80,
-                        backgroundImage: _profileImage != null
-                            ? FileImage(_profileImage!)
-                            : const AssetImage('images/profile.jpg') as ImageProvider,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-
-                    // Name
-                    const Text(
-                      'Eric Candra',
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-
-                    // Email
-                    const Text(
-                      'ericcandra@gmail.com',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white70,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-
-                    // Phone Number
-                    const Text(
-                      '+62 812 1555 9999',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white70,
-                      ),
-                    ),
-                    const SizedBox(height: 24),
-
-                    // Additional Details
-                    const Divider(height: 1, thickness: 1, color: Colors.white70),
-                    const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    Stack(
                       children: [
-                        Column(
-                          children: const [
-                            Icon(Icons.cake, color: Colors.white, size: 30),
-                            SizedBox(height: 8),
-                            Text(
-                              'Birthday',
-                              style: TextStyle(fontSize: 16, color: Colors.white70),
-                            ),
-                            Text(
-                              '29 Oktober 2001',
-                              style: TextStyle(fontSize: 16, color: Colors.white),
-                            ),
-                          ],
+                        CircleAvatar(
+                          radius: 80,
+                          backgroundImage: _profileImage != null
+                              ? FileImage(_profileImage!)
+                              : _selectedImage != null
+                                  ? AssetImage(_selectedImage!) as ImageProvider
+                                  : const AssetImage('images/profile.jpg'),
                         ),
-                        Column(
-                          children: const [
-                            Icon(Icons.location_city, color: Colors.white, size: 30),
-                            SizedBox(height: 8),
-                            Text(
-                              'Kota',
-                              style: TextStyle(fontSize: 16, color: Colors.white70),
+                        Positioned(
+                          bottom: 5,
+                          right: 5,
+                          child: GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ListTile(
+                                        leading: const Icon(Icons.folder),
+                                        title: const Text('Choose from Local Images'),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          _pickImageFromLocal();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 24,
+                              child: Icon(Icons.camera_alt, color: Colors.blue, size: 24),
                             ),
-                            Text(
-                              'Palembang',
-                              style: TextStyle(fontSize: 16, color: Colors.white),
-                            ),
-                          ],
+                          ),
                         ),
                       ],
                     ),
+                    const SizedBox(height: 16),
+                    Text(
+                      _name,
+                      style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      _email,
+                      style: const TextStyle(fontSize: 18, color: Colors.white70),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      _phone,
+                      style: const TextStyle(fontSize: 18, color: Colors.white70),
+                    ),
                     const SizedBox(height: 24),
-
-                    // Edit Button
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final updatedData = await Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => EditProfileScreen()),
+                          MaterialPageRoute(
+                            builder: (context) => EditProfileScreen(
+                              initialName: _name,
+                              initialEmail: _email,
+                              initialPhone: _phone,
+                            ),
+                          ),
                         );
+
+                        if (updatedData != null) {
+                          setState(() {
+                            _name = updatedData['name'];
+                            _email = updatedData['email'];
+                            _phone = updatedData['phone'];
+                          });
+                        }
                       },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        backgroundColor: Colors.white,
-                      ),
-                      child: const Text('Edit Profile', style: TextStyle(color: Colors.blue)),
+                      child: const Text('Edit Profile'),
                     ),
                   ],
                 ),
@@ -177,20 +204,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class EditProfileScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Edit Profile'),
-      ),
-      body: const Center(
-        child: Text('Edit Profile Screen Placeholder'),
       ),
     );
   }
