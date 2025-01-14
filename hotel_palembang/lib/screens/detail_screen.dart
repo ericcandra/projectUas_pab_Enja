@@ -1,9 +1,7 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_palembang/models/hotel.dart';
-
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart'; // Library untuk rating
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailScreen extends StatefulWidget {
@@ -16,6 +14,7 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   bool _isFavorite = false;
+  double _currentRating = 0.0;
 
   Future<void> _loadFavoriteStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -25,10 +24,26 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
+  Future<void> _loadRating() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _currentRating = prefs.getDouble('rating_${widget.varHome.name}') ?? 0.0;
+    });
+  }
+
+  Future<void> _saveRating(double rating) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setDouble('rating_${widget.varHome.name}', rating);
+    setState(() {
+      _currentRating = rating;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _loadFavoriteStatus();
+    _loadRating();
   }
 
   Future<void> _toggleFavorite() async {
@@ -178,6 +193,28 @@ class _DetailScreenState extends State<DetailScreen> {
                     thickness: 1,
                   ),
                   const SizedBox(height: 8),
+                  // Rating
+                  Text(
+                    'Your Rating:',
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  RatingBar.builder(
+                    initialRating: _currentRating,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                    ),
+                    onRatingUpdate: (rating) {
+                      _saveRating(rating);
+                    },
+                  ),
+                  const SizedBox(height: 16),
                 ],
               ),
             ),
