@@ -59,7 +59,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       : null,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: BorderSide(color: Colors.deepPurple.shade200),
+                    borderSide: BorderSide(color: const Color.fromARGB(255, 229, 129, 204)),
                   ),
                   contentPadding: const EdgeInsets.symmetric(vertical: 12),
                 ),
