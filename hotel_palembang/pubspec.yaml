@@ -12,6 +12,7 @@ dependencies:
   cached_network_image:
   shared_preferences:
   image_picker: ^1.1.2
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:

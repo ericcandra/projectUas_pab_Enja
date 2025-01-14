@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotel_palembang/data/user_data.dart';
-import 'package:hotel_palembang/models/user.dart';
+
 import 'package:hotel_palembang/screens/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool validateLogin(String email, String password) {
-    for (User user in userList) {
+    for (var user in userList) {
       if (user.email == email && user.password == password) {
         return true;
       }

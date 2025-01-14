@@ -14,6 +14,7 @@ void main() async {
   runApp(MainApp(isLoggedIn: isLoggedIn,));
 }
 
+
 class MainApp extends StatelessWidget {
   final bool isLoggedIn;
   const MainApp({super.key, required this.isLoggedIn});
