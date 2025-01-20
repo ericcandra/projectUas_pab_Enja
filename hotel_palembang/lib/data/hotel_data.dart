@@ -7,7 +7,7 @@ var hotelList = [
     description:
         'Airish Hotel Palembang adalah hotel di kawasan Sukarami yang menawarkan kamar nyaman dengan fasilitas kolam renang, Wi-Fi gratis, dan restoran. Lokasinya strategis, dekat dengan Museum Balaputra Dewa, Palembang Trade Center Mall, serta hanya 20 menit dari Bandara Sultan Mahmud Badaruddin II.',
     built: '1990',
-    star: 'Bintang 4',
+    star: '4',
     imageAsset: 'images/hotel_airish.jpg',
     imageUrls: [
       'https://pix10.agoda.net/hotelImages/6383400/-1/c231a4277efeb56cecc77cc981821530.jpg?s=1024x768',
@@ -22,7 +22,7 @@ var hotelList = [
     description:
         'Algoritma Hotel adalah hotel ekonomis yang berada di pusat kota Palembang, dekat dengan berbagai tempat wisata dan pusat perbelanjaan. Hotel ini menawarkan kenyamanan dengan kamar bersih, layanan ramah, dan harga yang terjangkau. Fasilitasnya termasuk Wi-Fi gratis, parkir, dan restoran.',
     built: '2000',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_algoritma.jpg',
     imageUrls: [
       'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/rsfit1440960gsm/tix-hotel/images-web/2022/07/09/f387aa71-fea9-4c0e-83aa-ddd7f5989d89-1657342526714-97d05039d0b7b55e913da1de2aba6ed0.jpg',
@@ -37,7 +37,7 @@ var hotelList = [
     description:
         'Alts Hotel di Palembang adalah hotel modern yang dirancang untuk pelancong bisnis dan rekreasi. Terletak di jantung kota Palembang, hotel ini menawarkan lokasi yang strategis dengan akses mudah ke berbagai bisnis lokal, tempat-tempat budaya, dan area perbelanjaan seperti Palembang Indah Mall. Hotel ini memiliki 207 kamar dengan fasilitas seperti Wi-Fi gratis, kolam renang, pusat kebugaran, spa, dan restoran 24 jam.',
     built: '2008',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_alts.jpg',
     imageUrls: [
       'https://images.trvl-media.com/hotels/9000000/8330000/8324500/8324483/7b818f99_z.jpg',
@@ -52,7 +52,7 @@ var hotelList = [
     description:
         'Amaris Hotel Palembang adalah hotel bintang 2 yang terletak di Jalan Demang Lebar Daun, Palembang. Hotel ini merupakan bagian dari jaringan Santika Indonesia Hotels & Resorts, dan menawarkan akomodasi modern dengan 180 kamar yang tersebar di 8 lantai. Fasilitas hotel termasuk Wi-Fi gratis, restoran, dan ruang pertemuan.',
     built: '2014',
-    star: 'Bintang 2',
+    star: '2',
     imageAsset: 'images/hotel_amaris.jpg',
     imageUrls: [
       'https://www.jelajahsumatra.com/wp-content/uploads/2022/09/hotel-amaris-palembang.jpg',
@@ -67,7 +67,7 @@ var hotelList = [
     description:
         'Hotel Arista Palembang adalah hotel bintang 5 yang terletak di pusat kota, dekat dengan Palembang Icon Mall. Hotel ini menawarkan berbagai fasilitas mewah, seperti tiga kolam renang, spa, pusat kebugaran, dan restoran. Selain itu, hotel ini menyediakan layanan antar-jemput gratis, termasuk ke bandara. Hotel Arista dikenal dengan suasana yang nyaman dan layanan pelanggan yang sangat baik. Fasilitas lainnya termasuk parkir gratis, bar, dan layanan kamar.',
     built: '2014',
-    star: 'Bintang 5',
+    star: '5',
     imageAsset: 'images/hotel_arista.jpg',
     imageUrls: [
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/a9/a1/bf/kolam-renang-di-lantai.jpg?w=1000&h=-1&s=1',
@@ -82,7 +82,7 @@ var hotelList = [
     description:
         'Hotel Aryaduta Palembang adalah hotel mewah yang terletak di dekat Palembang Square Mall, menawarkan 167 kamar yang tersebar di 18 lantai. Para tamu dapat menikmati pemandangan Sungai Musi dan akses mudah ke pusat perbelanjaan dan tempat wisata. Hotel ini memiliki berbagai fasilitas seperti pusat kebugaran, kolam renang, dan berbagai pilihan tempat makan. Hotel ini merupakan pilihan ideal bagi pelancong bisnis maupun rekreasi.',
     built: '2005',
-    star: 'Bintang 5',
+    star: '5',
     imageAsset: 'images/hotel_aryaduta.jpg',
     imageUrls: [
       'https://photos.hotelbeds.com/giata/xxl/09/096943/096943a_hb_a_004.jpg',
@@ -97,7 +97,7 @@ var hotelList = [
     description:
         'Hotel Aston Palembang adalah hotel bintang 3 yang menawarkan fasilitas yang nyaman untuk para tamu, termasuk kolam renang, ruang rapat, dan restoran. Hotel ini juga menyediakan layanan yang lengkap, seperti layanan kamar 24 jam, fasilitas parkir, dan akses Wi-Fi gratis.',
     built: '2015',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_aston.jpg',
     imageUrls: [
       'https://imageresizer.arch.software/astoninternational/Images/v1/AstonPalembang/Room/Deluxe_Double.jpg?location=center',
@@ -112,7 +112,7 @@ var hotelList = [
     description:
         'BATIQA Hotel Palembang adalah hotel modern yang berlokasi strategis di jantung kota, dekat dengan kantor-kantor pemerintahan utama, mal-mal besar, dan Pasar Cinde yang populer. Hotel ini berjarak sekitar 15 km dari Bandara Sultan Mahmud Badaruddin II. Hotel ini menawarkan 160 kamar yang nyaman, pusat kebugaran, kolam renang outdoor, dan berbagai pilihan tempat makan, termasuk menu khas Jepang di FRESQA Bistro.',
     built: '2010',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_batiqa.jpg',
     imageUrls: [
       'https://media-cdn.tripadvisor.com/media/photo-s/13/14/db/43/batiqa-hotel-palembang.jpg',
@@ -127,7 +127,7 @@ var hotelList = [
     description:
         'Hotel Beston Palembang adalah akomodasi modern yang menawarkan berbagai fasilitas, seperti dua kolam renang, spa, restoran, dan layanan antar-jemput bandara gratis. Hotel ini juga menyediakan layanan kamar keluarga, fasilitas untuk tamu dengan kebutuhan khusus, serta layanan kebersihan harian. Hotel ini terkenal di kalangan keluarga, dengan lokasi yang hanya sekitar 1 km dari pusat kota Palembang.',
     built: '2009',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_beston.jpg',
     imageUrls: [
       'https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10002189-e83d6a247eeda9c25105ae7854523599.jpeg?_src=imagekit&tr=c-at_max',
@@ -142,7 +142,7 @@ var hotelList = [
     description:
         'Hotel Daira Palembang, juga dikenal sebagai Grand Daira Hotel, menawarkan akomodasi bintang 4 yang terletak dekat dengan area bisnis utama dan tempat wisata di kota ini. Hotel ini memiliki fasilitas modern seperti kolam renang luar ruangan, Wi-Fi gratis, dan restoran di lokasi. Para tamu dapat menikmati berbagai layanan, termasuk layanan kamar, antar-jemput bandara, dan bantuan pramutamu.',
     built: '2006',
-    star: 'Bintang 4',
+    star: '4',
     imageAsset: 'images/hotel_daira.jpg',
     imageUrls: [
       'https://s-light.tiket.photos/t/01E25EBZS3W0FY9GTG6C42E1SE/platform-mweb-high/tix-hotel/images-web/2020/10/31/a45011a6-7963-4e23-a248-1032c49e4433-1604134476820-95e3636bb557172d23411126e5955617.jpg',
@@ -157,7 +157,7 @@ var hotelList = [
     description:
         'Harper Palembang by Aston adalah hotel modern yang dibuka pada tahun 2017. Hotel ini menawarkan berbagai fasilitas, termasuk kolam renang luar ruangan, pusat kebugaran, dan spa. Para tamu dapat menikmati kamar-kamar yang nyaman dengan minibar dan Wi-Fi gratis, dan lokasinya strategis, dekat dengan Palembang Trade Center Mall dan Palembang Golf Club.',
     built: '2017',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_harper.jpg',
     imageUrls: [
       'https://img.hotelmurah.com/hotel/myhm_8286_2.jpg',
@@ -172,7 +172,7 @@ var hotelList = [
     description:
         'Hotel Santika Premiere Bandara Palembang adalah hotel bintang 4 yang terletak dekat dengan Bandara Sultan Mahmud Badaruddin II. Hotel ini menawarkan berbagai fasilitas, termasuk kolam renang, pusat kebugaran, restoran, dan akses Wi-Fi gratis. Dikenal dengan kenyamanannya, hotel ini cocok untuk wisatawan bisnis maupun keluarga.',
     built: '2018',
-    star: 'Bintang 4',
+    star: '4',
     imageAsset: 'images/hotel_santika.jpg',
     imageUrls: [
       'https://annienugraha.com/wp-content/uploads/2022/10/Santika-PLG-resto-1.jpg',
@@ -187,7 +187,7 @@ var hotelList = [
     description:
         'Wyndham Opi Hotel Palembang adalah hotel bintang 4 yang terletak dekat OPI Mall dan OPI Convention Center. Dikenal dengan fasilitas modern, seperti WiFi gratis, pusat bisnis, dan ruang pertemuan, hotel ini menawarkan kenyamanan dengan pemandangan kota Palembang. Hotel ini memiliki akses mudah ke berbagai atraksi utama kota',
     built: '2020',
-    star: 'Bintang 4',
+    star: '4',
     imageAsset: 'images/hotel_wyndham.jpg',
     imageUrls: [
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/9b/72/20/pool.jpg?w=1400&h=-1&s=1',
@@ -202,7 +202,7 @@ var hotelList = [
     description:
         'Hotel The Zuri Palembang adalah hotel modern yang terletak di kompleks perbelanjaan Transmart di pusat kota Palembang, tepatnya di kawasan 24 Ilir. Diresmikan pada 1 Mei 2018, hotel ini menawarkan kenyamanan dengan berbagai fasilitas mewah, seperti kolam renang infinity di rooftop, bar dan lounge, fitness center, serta restoran yang menyajikan hidangan lokal dan internasional. Selain itu, hotel ini juga memiliki ruang pertemuan dan ballroom yang besar, cocok untuk acara bisnis atau sosial.',
     built: '2018',
-    star: 'Bintang 3',
+    star: '3',
     imageAsset: 'images/hotel_zuri.jpg',
     imageUrls: [
       'https://d2ile4x3f22snf.cloudfront.net/wp-content/uploads/sites/33/2016/08/24105617/1920-x-1080-IMG_5839.jpg',
@@ -217,7 +217,7 @@ var hotelList = [
     description:
         'Hotel Novotel Palembang merupakan hotel bintang 4 yang terletak di jantung kota Palembang. Dikenal dengan fasilitas lengkap, termasuk kolam renang luar ruangan, pusat kebugaran, dan ruang pertemuan, hotel ini menawarkan kenyamanan bagi para tamu bisnis maupun wisatawan. Hotel ini juga memiliki beberapa pilihan restoran, termasuk The Square yang menyajikan masakan internasional dan Indonesia.',
     built: '2002',
-    star: 'Bintang 4',
+    star: '4',
     imageAsset: 'images/novotel.jpg',
     imageUrls: [
       'https://www.ticati.com/img/hotel/11225193s.jpg',
